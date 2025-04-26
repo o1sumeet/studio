@@ -29,6 +29,7 @@ export default function Home() {
   const {toast} = useToast();
   const recipeCardRef = useRef<HTMLDivElement>(null);
   const summaryCardRef = useRef<HTMLDivElement>(null);
+  const instructionCardRef = useRef<HTMLDivElement>(null);
   const {theme, setTheme} = useTheme();
 
   useEffect(() => {
@@ -64,7 +65,7 @@ export default function Home() {
 
   useEffect(() => {
     if (summary) {
-      summaryCardRef.current?.scrollIntoView({
+      instructionCardRef.current?.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       });
@@ -160,8 +161,16 @@ export default function Home() {
                   ))}
                 </ul>
               </div>
+            </CardContent>
+          </Card>
+        )}
+        {recipe && (
+          <Card ref={instructionCardRef} className="glass p-6 space-y-4 shadow-xl transition-all duration-300 hover:scale-105">
+            <CardHeader className="p-0">
+              <CardTitle className="text-2xl font-semibold gradient-text">Instructions</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2 p-0">
               <div>
-                <h3 className="text-lg font-medium text-foreground">Instructions:</h3>
                 <Textarea
                   readOnly
                   value={recipe.instructions}

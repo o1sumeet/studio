@@ -53,10 +53,12 @@ Ingredients: {{{ingredients}}}
 Consider these points when creating the recipe:
 
 *   **Recipe Name:**  Give the recipe a creative and appetizing name.
-*   **Ingredients:** List all ingredients with precise quantities. Be specific (e.g., "1 tbsp olive oil", not just "olive oil").
+*   **Ingredients:** List all ingredients with precise quantities. Be specific (e.g., "1 tbsp olive oil", not just "olive oil").  If an ingredient is not suitable, use a substitute from other ingredients.
 *   **Instructions:** Provide clear, step-by-step instructions.  Include cooking times and temperatures where necessary.  Explain techniques.
 *   **Ingredient Consideration**: Be creative with ingredients and what you make.
-*   **Quantity**: Make sure your recipe takes into account the ingredient quatities.
+*   **Quantity**: Make sure your recipe takes into account the ingredient quantities.
+*   **Creativity**: Create new recipes
+*   **Unsuitable Ingredients**:  If an ingredient is unsuitable for a recipe, do not include it.
 
 Make sure the recipe is creative, utilizes the provided ingredients effectively, and results in a balanced and flavorful dish. Focus on clear instructions that anyone can follow.
 
