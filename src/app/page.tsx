@@ -6,14 +6,15 @@ import {summarizeRecipe} from '@/ai/flows/recipe-summary';
 import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
 import {Textarea} from '@/components/ui/textarea';
-import {Card, CardHeader, CardContent, CardTitle, CardDescription} from '@/components/ui/card';
+import {Card, CardHeader, CardContent, CardTitle} from '@/components/ui/card';
 import {useToast} from '@/hooks/use-toast';
-import {CheckCircle, Utensils} from 'lucide-react';
+import {Utensils} from 'lucide-react';
 import {
   Hero,
   HeroDescription,
   HeroTitle,
 } from '@/components/ui/hero';
+import {Avatar, AvatarImage} from "@/components/ui/avatar";
 
 const quotes = [
   "\"Cooking is at once child's play and adult's joy. And cooking done with care is an act of love.\" - Craig Claiborne",
@@ -92,7 +93,6 @@ export default function Home() {
       toast({
         title: 'Recipe Generated',
         description: 'Your recipe has been successfully generated!',
-        action: <CheckCircle className="h-4 w-4 text-green-500" />,
       });
     } catch (error: any) {
       console.error('Failed to generate recipe:', error);
@@ -126,7 +126,10 @@ export default function Home() {
         </HeroDescription>
       </Hero>
       <div className="w-full max-w-md space-y-4">
-        <div>
+        <div className="flex items-center space-x-2">
+          <Avatar>
+            <AvatarImage src="https://picsum.photos/50/50" alt="User Avatar" />
+          </Avatar>
           <Input
             type="text"
             placeholder="Enter ingredients (e.g., chicken, broccoli, cheese)"
@@ -143,54 +146,76 @@ export default function Home() {
         >
           {loading ? 'Generating...' : 'Generate Recipe'}
         </Button>
+
+        {/* Recipe Response */}
         {recipe && (
-          <Card ref={recipeCardRef} className="glass p-6 space-y-4 shadow-xl transition-all duration-300 hover:scale-105">
-            <CardHeader className="p-0 flex flex-row items-center space-x-4">
-              <Utensils className="h-8 w-8 text-primary" />
-              <CardTitle className="text-2xl font-semibold gradient-text">
-                {recipe.recipeName}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2 p-0">
-              <div>
-                <h3 className="text-lg font-medium text-foreground">Ingredients:</h3>
-                <ul className="list-disc list-inside text-sm text-muted-foreground">
-                  {recipe.ingredients.map((ingredient, index) => (
-                    <li key={index}>{ingredient}</li>
-                  ))}
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
+          <div className="flex items-start space-x-2">
+            <Avatar>
+              <AvatarImage src="https://picsum.photos/51/51" alt="Chef Avatar" />
+            </Avatar>
+            <Card ref={recipeCardRef} className="w-full glass p-4 space-y-4 shadow-xl transition-all duration-300 hover:scale-105">
+              <CardHeader className="p-0 flex flex-row items-center space-x-4">
+                <Utensils className="h-6 w-6 text-primary" />
+                <CardTitle className="text-xl font-semibold gradient-text">
+                  {recipe.recipeName}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2 p-0">
+                <div>
+                  <h3 className="text-lg font-medium text-foreground">Ingredients:</h3>
+                  <ul className="list-disc list-inside text-sm text-muted-foreground">
+                    {recipe.ingredients.map((ingredient, index) => (
+                      <li key={index}>{ingredient}</li>
+                    ))}
+                  </ul>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         )}
+
+        {/* Instructions Response */}
         {recipe && (
-          <Card ref={instructionCardRef} className="glass p-6 space-y-4 shadow-xl transition-all duration-300 hover:scale-105">
-            <CardHeader className="p-0 flex flex-row items-center space-x-4">
-              <Utensils className="h-8 w-8 text-primary" />
-              <CardTitle className="text-2xl font-semibold gradient-text">Instructions</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2 p-0">
-              <div>
-                <Textarea
-                  readOnly
-                  value={recipe.instructions}
-                  className="w-full h-48 text-sm text-muted-foreground bg-interactive border-input shadow-sm focus-visible:ring-interactive resize-none"
-                />
-              </div>
-            </CardContent>
-          </Card>
+          <div className="flex items-start space-x-2">
+            <Avatar>
+              <AvatarImage src="https://picsum.photos/52/52" alt="Chef Avatar" />
+            </Avatar>
+            <Card ref={instructionCardRef} className="w-full glass p-4 space-y-4 shadow-xl transition-all duration-300 hover:scale-105">
+              <CardHeader className="p-0 flex flex-row items-center space-x-4">
+                <Utensils className="h-6 w-6 text-primary" />
+                <CardTitle className="text-xl font-semibold gradient-text">Instructions</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2 p-0">
+                <div>
+                  <Textarea
+                    readOnly
+                    value={recipe.instructions}
+                    className="w-full h-48 text-sm text-muted-foreground bg-interactive border-input shadow-sm focus-visible:ring-interactive resize-none"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         )}
+
+        {/* Summary Response */}
         {summary && (
-          <Card ref={summaryCardRef} className="glass p-6 space-y-4 shadow-xl transition-all duration-300 hover:scale-105">
-            <CardHeader className="p-0 flex flex-row items-center space-x-4">
-              <Utensils className="h-8 w-8 text-primary" />
-              <CardTitle className="text-2xl font-semibold gradient-text">Summary</CardTitle>
-              <CardDescription className="text-muted-foreground">{summary}</CardDescription>
-            </CardHeader>
-          </Card>
+          <div className="flex items-start space-x-2">
+            <Avatar>
+              <AvatarImage src="https://picsum.photos/53/53" alt="Chef Avatar" />
+            </Avatar>
+            <Card ref={summaryCardRef} className="w-full glass p-4 space-y-4 shadow-xl transition-all duration-300 hover:scale-105">
+              <CardHeader className="p-0 flex flex-row items-center space-x-4">
+                <Utensils className="h-6 w-6 text-primary" />
+                <CardTitle className="text-xl font-semibold gradient-text">Summary</CardTitle>
+              </CardHeader>
+              <CardContent className="p-0">
+                <p className="text-sm text-muted-foreground">{summary}</p>
+              </CardContent>
+            </Card>
+          </div>
         )}
       </div>
     </div>
   );
 }
-
