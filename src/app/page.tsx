@@ -55,6 +55,7 @@ export default function Home() {
   const instructionCardRef = useRef<HTMLDivElement>(null);
   const [quote, setQuote] = useState(quotes[Math.floor(Math.random() * quotes.length)]);
   const [chatHistory, setChatHistory] = useState<ChatHistoryItem[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (recipe) {
@@ -209,23 +210,25 @@ export default function Home() {
             <Avatar>
               <AvatarImage src="https://picsum.photos/50/50" alt="User Avatar" />
             </Avatar>
-            <Input
-              type="text"
-              placeholder="Enter ingredients (e.g., chicken, broccoli, cheese)"
-              value={ingredients}
-              onChange={(e) => setIngredients(e.target.value)}
-              className="border-input shadow-sm focus-visible:ring-interactive"
-              onKeyDown={handleKeyDown}
-            />
+            <div className="relative w-full">
+              <Input
+                type="text"
+                placeholder="Enter ingredients (e.g., chicken, broccoli, cheese)"
+                value={ingredients}
+                onChange={(e) => setIngredients(e.target.value)}
+                className="border-input shadow-sm focus-visible:ring-interactive pr-10"
+                onKeyDown={handleKeyDown}
+                ref={inputRef}
+              />
+              <Button
+                onClick={handleGenerateRecipe}
+                className="absolute right-1 top-1 rounded-md bg-primary text-primary-foreground hover:bg-primary/80 focus-visible:ring-interactive h-8 w-8 p-0"
+                disabled={loading}
+              >
+                {loading ? '...' : <Utensils className="h-4 w-4" />}
+              </Button>
+            </div>
           </div>
-          <Button
-            onClick={handleGenerateRecipe}
-            className="w-full bg-primary text-primary-foreground hover:bg-primary/80 focus-visible:ring-interactive"
-            disabled={loading}
-          >
-            {loading ? 'Generating...' : 'Generate Recipe'}
-          </Button>
-
           {/* Recipe Response */}
           {recipe && (
             <div className="flex items-start space-x-2">
