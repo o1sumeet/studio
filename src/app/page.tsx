@@ -8,8 +8,7 @@ import {Input} from '@/components/ui/input';
 import {Textarea} from '@/components/ui/textarea';
 import {Card, CardHeader, CardContent, CardTitle, CardDescription} from '@/components/ui/card';
 import {useToast} from '@/hooks/use-toast';
-import {CheckCircle, Sun, Moon, Utensils} from 'lucide-react';
-import {useTheme} from 'next-themes';
+import {CheckCircle, Utensils} from 'lucide-react';
 import {
   Hero,
   HeroDescription,
@@ -37,7 +36,6 @@ export default function Home() {
   const recipeCardRef = useRef<HTMLDivElement>(null);
   const summaryCardRef = useRef<HTMLDivElement>(null);
   const instructionCardRef = useRef<HTMLDivElement>(null);
-  const {theme, setTheme} = useTheme();
   const [quote, setQuote] = useState(quotes[Math.floor(Math.random() * quotes.length)]);
 
   useEffect(() => {
@@ -127,14 +125,6 @@ export default function Home() {
           </span>
         </HeroDescription>
       </Hero>
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-      >
-        {theme === 'light' ? <Moon className="h-[1.2rem] w-[1.2rem]" /> : <Sun className="h-[1.2rem] w-[1.2rem]" />}
-        <span className="sr-only">Toggle theme</span>
-      </Button>
       <div className="w-full max-w-md space-y-4">
         <div>
           <Input
@@ -203,3 +193,4 @@ export default function Home() {
     </div>
   );
 }
+
