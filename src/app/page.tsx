@@ -82,6 +82,12 @@ export default function Home() {
     }
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleGenerateRecipe();
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-start min-h-screen py-12 bg-background">
       <Hero>
@@ -101,6 +107,7 @@ export default function Home() {
             value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}
             className="border-input shadow-sm focus-visible:ring-accent"
+            onKeyDown={handleKeyDown}
           />
         </div>
         <Button
