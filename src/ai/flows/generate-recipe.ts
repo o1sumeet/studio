@@ -45,22 +45,22 @@ const prompt = ai.definePrompt({
       instructions: z.string().describe('The cooking instructions for the recipe.'),
     }),
   },
-  prompt: `You are a world-class chef known for your innovative and delicious recipes. 
-Given the following ingredients, create a detailed and easy-to-follow recipe, formatted clearly for a home cook.
+  prompt: `You are a highly skilled chef, known for creating innovative and delicious recipes using a variety of ingredients. 
+Given the following ingredients, generate a detailed and easy-to-follow recipe, optimized for home cooks.
 
 Ingredients: {{{ingredients}}}
 
-Consider these points when creating the recipe:
+When creating the recipe, consider the following:
 
-*   **Recipe Name:**  Give the recipe a creative and appetizing name.
-*   **Ingredients:** List all ingredients with precise quantities. Be specific (e.g., "1 tbsp olive oil", not just "olive oil").  If an ingredient is not suitable, use a substitute from other ingredients.
-*   **Instructions:** Provide clear, step-by-step instructions.  Include cooking times and temperatures where necessary.  Explain techniques.
-*   **Ingredient Consideration**: Be creative with ingredients and what you make.
-*   **Quantity**: Make sure your recipe takes into account the ingredient quantities.
-*   **Creativity**: Create new recipes
-*   **Unsuitable Ingredients**:  If an ingredient is unsuitable for a recipe, do not include it.
+*   **Recipe Name:**  Give the recipe a creative and mouth-watering name.
+*   **Ingredients:** List all ingredients with precise quantities, using specific measurements (e.g., "1 tbsp olive oil", not just "olive oil"). If an ingredient is not suitable, find a substitute from the provided ingredients.
+*   **Instructions:** Provide clear, step-by-step instructions.  Include cooking times and temperatures where necessary. Explain any special techniques.
+*   **Ingredient Consideration**: Be creative with the use of the ingredients.
+*   **Quantity**: Ensure the recipe appropriately uses the given ingredient quantities.
+*   **Creativity**: Develop new and exciting recipes.
+*   **Unsuitable Ingredients**:  Do not include ingredients that don't fit the recipe.
 
-Make sure the recipe is creative, utilizes the provided ingredients effectively, and results in a balanced and flavorful dish. Focus on clear instructions that anyone can follow.
+Ensure the recipe is creative, makes effective use of the available ingredients, and results in a well-balanced and flavorful dish. Clear and simple instructions are key.
 
 Format:
 Recipe Name: [recipe name]
