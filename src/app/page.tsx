@@ -1,6 +1,6 @@
 'use client';
 
-import {useState} from 'react';
+import {useState, useRef, useEffect} from 'react';
 import {generateRecipe} from '@/ai/flows/generate-recipe';
 import {summarizeRecipe} from '@/ai/flows/recipe-summary';
 import {Button} from '@/components/ui/button';
@@ -8,7 +8,6 @@ import {Input} from '@/components/ui/input';
 import {Textarea} from '@/components/ui/textarea';
 import {Card, CardHeader, CardContent, CardTitle, CardDescription} from '@/components/ui/card';
 import {useToast} from '@/hooks/use-toast';
-import {useEffect} from 'react';
 import {CheckCircle} from 'lucide-react';
 import {
   Hero,
@@ -27,6 +26,7 @@ export default function Home() {
   const [summary, setSummary] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const {toast} = useToast();
+  const recipeCardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (recipe) {
@@ -50,6 +50,12 @@ export default function Home() {
       };
 
       fetchSummary();
+
+      // Scroll into view after summary is fetched
+      recipeCardRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
     }
   }, [recipe, toast]);
 
@@ -118,7 +124,7 @@ export default function Home() {
           {loading ? 'Generating...' : 'Generate Recipe'}
         </Button>
         {recipe && (
-          <Card className="bg-card shadow-md transition-all duration-300 hover:scale-105">
+          <Card ref={recipeCardRef} className="bg-card shadow-md transition-all duration-300 hover:scale-105">
             <CardHeader>
               <CardTitle className="text-2xl font-semibold text-foreground">
                 {recipe.recipeName}
@@ -149,3 +155,4 @@ export default function Home() {
     </div>
   );
 }
+
