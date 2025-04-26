@@ -92,7 +92,6 @@ body {
   body {
     @apply bg-background text-foreground;
     /* background: linear-gradient(to bottom, #f0f0f0, #ffffff); Gradient background */
-    background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
   }
 }
 
@@ -115,5 +114,3 @@ body {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Reduced shadow intensity */
   z-index: 1;
 }
-
-
