@@ -149,6 +149,10 @@ export default function Home() {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       handleGenerateRecipe();
+      setIngredients(''); // Clear the input field
+      if (inputRef.current) {
+        inputRef.current.focus(); // Refocus on the input
+      }
     }
   };
 
