@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import {Roboto} from 'next/font/google';
 import './globals.css';
+import {SidebarProvider} from '@/components/ui/sidebar';
 
 const roboto = Roboto({
   weight: '400',
@@ -22,8 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.variable}>
+        <SidebarProvider>
           {children}
+        </SidebarProvider>
       </body>
     </html>
   );
 }
+
