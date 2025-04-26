@@ -124,14 +124,14 @@ export default function Home() {
           {loading ? 'Generating...' : 'Generate Recipe'}
         </Button>
         {recipe && (
-          <Card ref={recipeCardRef} className="bg-card shadow-md transition-all duration-300 hover:scale-105">
-            <CardHeader>
-              <CardTitle className="text-2xl font-semibold text-foreground">
+          <Card ref={recipeCardRef} className="glass p-6 space-y-4 shadow-xl transition-all duration-300 hover:scale-105">
+            <CardHeader className="p-0">
+              <CardTitle className="text-2xl font-semibold gradient-text">
                 {recipe.recipeName}
               </CardTitle>
               {summary && <CardDescription className="text-muted-foreground">{summary}</CardDescription>}
             </CardHeader>
-            <CardContent className="space-y-2">
+            <CardContent className="space-y-2 p-0">
               <div>
                 <h3 className="text-lg font-medium text-foreground">Ingredients:</h3>
                 <ul className="list-disc list-inside text-sm text-muted-foreground">
@@ -155,4 +155,3 @@ export default function Home() {
     </div>
   );
 }
-
