@@ -9,7 +9,13 @@ import {Textarea} from '@/components/ui/textarea';
 import {Card, CardHeader, CardContent, CardTitle, CardDescription} from '@/components/ui/card';
 import {useToast} from '@/hooks/use-toast';
 import {useEffect} from 'react';
-import {CheckCircle, AlertCircle} from 'lucide-react';
+import {CheckCircle} from 'lucide-react';
+import {
+  Hero,
+  HeroDescription,
+  HeroImage,
+  HeroTitle,
+} from '@/components/ui/hero';
 
 export default function Home() {
   const [ingredients, setIngredients] = useState('');
@@ -78,12 +84,15 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-start min-h-screen py-12 bg-background">
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold text-primary">FridgeChef</h1>
-        <p className="text-muted-foreground">
+      <Hero>
+        <HeroTitle className="text-3xl font-bold text-primary">
+          FridgeChef
+        </HeroTitle>
+        <HeroDescription className="text-muted-foreground">
           Enter the ingredients you have in your fridge to generate a recipe.
-        </p>
-      </header>
+        </HeroDescription>
+        <HeroImage src="https://picsum.photos/400/300" alt="A fridge with ingredients" />
+      </Hero>
       <div className="w-full max-w-md space-y-4">
         <div>
           <Input
