@@ -25,6 +25,7 @@ import {
   SidebarMenuItem,
   SidebarMenuButton
 } from '@/components/ui/sidebar';
+import {Skeleton} from '@/components/ui/skeleton';
 
 const quotes = [
   "\"Cooking is at once child's play and adult's joy. And cooking done with care is an act of love.\" - Craig Claiborne",
@@ -49,6 +50,7 @@ export default function Home() {
   } | null>(null);
   const [summary, setSummary] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [loadingChat, setLoadingChat] = useState(false); // New state for loading chat history
   const {toast} = useToast();
   const recipeCardRef = useRef<HTMLDivElement>(null);
   const summaryCardRef = useRef<HTMLDivElement>(null);
@@ -160,7 +162,7 @@ export default function Home() {
     setIngredients(item.ingredients);
 
     const loadRecipe = async () => {
-        setLoading(true);
+        setLoadingChat(true); // Start loading
         setRecipe(null);
         setSummary(null);
         try {
@@ -184,7 +186,7 @@ export default function Home() {
               error.message || 'Failed to generate a recipe. Please check your ingredients and try again.',
           });
         } finally {
-          setLoading(false);
+          setLoadingChat(false); // End loading
         }
       };
 
@@ -221,7 +223,21 @@ export default function Home() {
         </Hero>
         <div className="space-y-4">
           {/* Recipe Response */}
-          {recipe && (
+          {loadingChat ? ( // Show skeleton while loading chat
+              <Card className="w-full glass p-4 space-y-4 shadow-xl transition-all duration-300">
+                  <CardHeader className="p-0 flex flex-row items-center space-x-4">
+                      <Skeleton className="h-6 w-6 rounded-full" />
+                      <CardTitle className="text-xl font-semibold">
+                          <Skeleton className="h-6 w-32" />
+                      </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-2 p-0">
+                      <Skeleton className="h-4 w-48" />
+                      <Skeleton className="h-4 w-64" />
+                      <Skeleton className="h-4 w-32" />
+                  </CardContent>
+              </Card>
+          ) : recipe && (
             <div className="flex items-start space-x-2">
               <Avatar>
                 <AvatarImage src="https://picsum.photos/51/51" alt="Chef Avatar" />
