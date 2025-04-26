@@ -111,7 +111,7 @@ export default function Home() {
           {loading ? 'Generating...' : 'Generate Recipe'}
         </Button>
         {recipe && (
-          <Card className="bg-card shadow-md">
+          <Card className="bg-card shadow-md transition-all duration-300 hover:scale-105">
             <CardHeader>
               <CardTitle className="text-2xl font-semibold text-foreground">
                 {recipe.recipeName}
