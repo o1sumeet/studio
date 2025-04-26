@@ -242,7 +242,7 @@ export default function Home() {
               <Avatar>
                 <AvatarImage src="https://picsum.photos/51/51" alt="Chef Avatar" />
               </Avatar>
-              <Card ref={recipeCardRef} className="w-full glass p-4 space-y-4 shadow-xl transition-all duration-300 hover:scale-105">
+              <Card ref={recipeCardRef} className="w-full glass p-4 space-y-4 shadow-xl transition-all duration-300">
                 <CardHeader className="p-0 flex flex-row items-center space-x-4">
                   <Utensils className="h-6 w-6 text-primary" />
                   <CardTitle className="text-xl font-semibold gradient-text">
@@ -269,7 +269,7 @@ export default function Home() {
               <Avatar>
                 <AvatarImage src="https://picsum.photos/52/52" alt="Chef Avatar" />
               </Avatar>
-              <Card ref={instructionCardRef} className="w-full glass p-4 space-y-4 shadow-xl transition-all duration-300 hover:scale-105">
+              <Card ref={instructionCardRef} className="w-full glass p-4 space-y-4 shadow-xl transition-all duration-300">
                 <CardHeader className="p-0 flex flex-row items-center space-x-4">
                   <Utensils className="h-6 w-6 text-primary" />
                   <CardTitle className="text-xl font-semibold gradient-text">Instructions</CardTitle>
@@ -293,7 +293,7 @@ export default function Home() {
               <Avatar>
                 <AvatarImage src="https://picsum.photos/53/53" alt="Chef Avatar" />
               </Avatar>
-              <Card ref={summaryCardRef} className="w-full glass p-4 space-y-4 shadow-xl transition-all duration-300 hover:scale-105">
+              <Card ref={summaryCardRef} className="w-full glass p-4 space-y-4 shadow-xl transition-all duration-300">
                 <CardHeader className="p-0 flex flex-row items-center space-x-4">
                   <Utensils className="h-6 w-6 text-primary" />
                   <CardTitle className="text-xl font-semibold gradient-text">Summary</CardTitle>
