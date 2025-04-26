@@ -8,7 +8,8 @@ import {Input} from '@/components/ui/input';
 import {Textarea} from '@/components/ui/textarea';
 import {Card, CardHeader, CardContent, CardTitle, CardDescription} from '@/components/ui/card';
 import {useToast} from '@/hooks/use-toast';
-import {CheckCircle} from 'lucide-react';
+import {CheckCircle, Sun, Moon} from 'lucide-react';
+import {useTheme} from 'next-themes';
 import {
   Hero,
   HeroDescription,
@@ -27,6 +28,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const {toast} = useToast();
   const recipeCardRef = useRef<HTMLDivElement>(null);
+  const {theme, setTheme} = useTheme();
 
   useEffect(() => {
     if (recipe) {
@@ -105,6 +107,15 @@ export default function Home() {
         </HeroDescription>
         <HeroImage src="https://picsum.photos/400/300" alt="A fridge with ingredients" />
       </Hero>
+      <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+        >
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
       <div className="w-full max-w-md space-y-4">
         <div>
           <Input
@@ -112,13 +123,13 @@ export default function Home() {
             placeholder="Enter ingredients (e.g., chicken, broccoli, cheese)"
             value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}
-            className="border-input shadow-sm focus-visible:ring-accent"
+            className="border-input shadow-sm focus-visible:ring-interactive"
             onKeyDown={handleKeyDown}
           />
         </div>
         <Button
           onClick={handleGenerateRecipe}
-          className="w-full bg-primary text-primary-foreground hover:bg-primary/80 focus-visible:ring-accent"
+          className="w-full bg-primary text-primary-foreground hover:bg-primary/80 focus-visible:ring-interactive"
           disabled={loading}
         >
           {loading ? 'Generating...' : 'Generate Recipe'}
@@ -145,7 +156,7 @@ export default function Home() {
                 <Textarea
                   readOnly
                   value={recipe.instructions}
-                  className="w-full h-48 text-sm text-muted-foreground bg-interactive border-input shadow-sm focus-visible:ring-accent resize-none"
+                  className="w-full h-48 text-sm text-muted-foreground bg-interactive border-input shadow-sm focus-visible:ring-interactive resize-none"
                 />
               </div>
             </CardContent>
