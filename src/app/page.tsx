@@ -13,9 +13,16 @@ import {useTheme} from 'next-themes';
 import {
   Hero,
   HeroDescription,
-  HeroImage,
   HeroTitle,
 } from '@/components/ui/hero';
+
+const quotes = [
+  "\"Cooking is at once child's play and adult's joy. And cooking done with care is an act of love.\" - Craig Claiborne",
+  "\"The only real stumbling block is fear of failure. In cooking, you've got to have a what-the-hell attitude.\" - Julia Child",
+  "\"Anyone who's a chef, who loves food, ultimately knows that all that matters is: 'Is it good? Does it give pleasure?'\" - Anthony Bourdain",
+  "\"Cooking is a subject you can never know enough about. There is always something new to discover.\" - Jacques Pepin",
+  "\"A recipe has no soul. You, as the cook, must bring soul to the recipe.\" - Thomas Keller",
+];
 
 export default function Home() {
   const [ingredients, setIngredients] = useState('');
@@ -31,6 +38,7 @@ export default function Home() {
   const summaryCardRef = useRef<HTMLDivElement>(null);
   const instructionCardRef = useRef<HTMLDivElement>(null);
   const {theme, setTheme} = useTheme();
+  const [quote, setQuote] = useState(quotes[Math.floor(Math.random() * quotes.length)]);
 
   useEffect(() => {
     if (recipe) {
@@ -114,9 +122,10 @@ export default function Home() {
           FridgeChef
         </HeroTitle>
         <HeroDescription className="text-muted-foreground">
-          Enter the ingredients you have in your fridge to generate a recipe.
+          <span className="text-4xl font-extrabold tracking-tight lg:text-5xl text-center gradient-text text-shadow">
+            {quote}
+          </span>
         </HeroDescription>
-        <HeroImage src="https://picsum.photos/400/300" alt="A fridge with ingredients" />
       </Hero>
       <Button
         variant="ghost"
