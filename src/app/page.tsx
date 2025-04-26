@@ -58,6 +58,14 @@ export default function Home() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    // Load chat history from local storage on component mount
+    const storedChatHistory = localStorage.getItem('chatHistory');
+    if (storedChatHistory) {
+      setChatHistory(JSON.parse(storedChatHistory));
+    }
+  }, []);
+
+  useEffect(() => {
     if (recipe) {
       const fetchSummary = async () => {
         try {
@@ -110,7 +118,11 @@ export default function Home() {
         recipeName: recipeData.recipeName,
       };
 
-      setChatHistory(prevHistory => [...prevHistory, newChatHistoryItem]);
+      const updatedChatHistory = [...chatHistory, newChatHistoryItem];
+      setChatHistory(updatedChatHistory);
+
+      // Save chat history to local storage
+      localStorage.setItem('chatHistory', JSON.stringify(updatedChatHistory));
 
       setRecipe({
         recipeName: recipeData.recipeName,
