@@ -10,56 +10,59 @@ export default {
   theme: {
   	extend: {
   		colors: {
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
+  			background: 'hsl(0, 0%, 98%)',
+  			foreground: 'hsl(0, 0%, 9%)',
   			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
+  				DEFAULT: 'hsl(0, 0%, 100%)',
+  				foreground: 'hsl(0, 0%, 9%)'
   			},
   			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
+  				DEFAULT: 'hsl(0, 0%, 100%)',
+  				foreground: 'hsl(0, 0%, 9%)'
   			},
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
+  				DEFAULT: 'hsl(0, 0%, 9%)',
+  				foreground: 'hsl(0, 0%, 100%)'
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				DEFAULT: 'hsl(0, 0%, 96.1%)',
+  				foreground: 'hsl(0, 0%, 9%)'
   			},
   			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
+  				DEFAULT: 'hsl(0, 0%, 96.1%)',
+  				foreground: 'hsl(0, 0%, 45.1%)'
   			},
   			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
+  				DEFAULT: 'hsl(0, 0%, 96.1%)',
+  				foreground: 'hsl(0, 0%, 9%)'
   			},
   			destructive: {
-  				DEFAULT: 'hsl(var(--destructive))',
-  				foreground: 'hsl(var(--destructive-foreground))'
+  				DEFAULT: 'hsl(0, 84.2%, 60.2%)',
+  				foreground: 'hsl(0, 0%, 98%)'
   			},
-  			border: 'hsl(var(--border))',
-  			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
+  			border: 'hsl(0, 0%, 89.8%)',
+  			input: 'hsl(0, 0%, 89.8%)',
+  			ring: 'hsl(0, 0%, 9%)',
   			chart: {
-  				'1': 'hsl(var(--chart-1))',
-  				'2': 'hsl(var(--chart-2))',
-  				'3': 'hsl(var(--chart-3))',
-  				'4': 'hsl(var(--chart-4))',
-  				'5': 'hsl(var(--chart-5))'
+  				'1': 'hsl(220, 70%, 50%)',
+  				'2': 'hsl(160, 60%, 45%)',
+  				'3': 'hsl(30, 80%, 55%)',
+  				'4': 'hsl(280, 65%, 60%)',
+  				'5': 'hsl(340, 75%, 55%)'
   			},
   			sidebar: {
-  				DEFAULT: 'hsl(var(--sidebar-background))',
-  				foreground: 'hsl(var(--sidebar-foreground))',
-  				primary: 'hsl(var(--sidebar-primary))',
-  				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-  				accent: 'hsl(var(--sidebar-accent))',
-  				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-  				border: 'hsl(var(--sidebar-border))',
-  				ring: 'hsl(var(--sidebar-ring))'
-  			}
+  				DEFAULT: 'hsl(240, 5.9%, 10%)',
+  				foreground: 'hsl(240, 4.8%, 95.9%)',
+  				primary: 'hsl(224.3, 76.3%, 48%)',
+  				'primary-foreground': 'hsl(0, 0%, 100%)',
+  				accent: 'hsl(240, 3.7%, 15.9%)',
+  				'accent-foreground': 'hsl(240, 4.8%, 95.9%)',
+  				border: 'hsl(240, 3.7%, 15.9%)',
+  				ring: 'hsl(217.2, 91.2%, 59.8%)'
+  			},
+  			interactive: 'hsl(0, 0%, 9%)',
+  			'interactive-hover': 'hsl(0, 0%, 20%)',
+  			'interactive-foreground': 'hsl(0, 0%, 100%)'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

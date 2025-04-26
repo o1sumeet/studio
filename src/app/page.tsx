@@ -8,7 +8,7 @@ import {Input} from '@/components/ui/input';
 import {Textarea} from '@/components/ui/textarea';
 import {Card, CardHeader, CardContent, CardTitle, CardDescription} from '@/components/ui/card';
 import {useToast} from '@/hooks/use-toast';
-import {CheckCircle, Sun, Moon} from 'lucide-react';
+import {CheckCircle, Sun, Moon, Utensils} from 'lucide-react';
 import {useTheme} from 'next-themes';
 import {
   Hero,
@@ -123,8 +123,7 @@ export default function Home() {
         size="icon"
         onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       >
-        <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-        <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+        {theme === 'light' ? <Moon className="h-[1.2rem] w-[1.2rem]" /> : <Sun className="h-[1.2rem] w-[1.2rem]" />}
         <span className="sr-only">Toggle theme</span>
       </Button>
       <div className="w-full max-w-md space-y-4">
@@ -147,7 +146,8 @@ export default function Home() {
         </Button>
         {recipe && (
           <Card ref={recipeCardRef} className="glass p-6 space-y-4 shadow-xl transition-all duration-300 hover:scale-105">
-            <CardHeader className="p-0">
+            <CardHeader className="p-0 flex flex-row items-center space-x-4">
+              <Utensils className="h-8 w-8 text-primary" />
               <CardTitle className="text-2xl font-semibold gradient-text">
                 {recipe.recipeName}
               </CardTitle>
@@ -166,7 +166,8 @@ export default function Home() {
         )}
         {recipe && (
           <Card ref={instructionCardRef} className="glass p-6 space-y-4 shadow-xl transition-all duration-300 hover:scale-105">
-            <CardHeader className="p-0">
+            <CardHeader className="p-0 flex flex-row items-center space-x-4">
+              <Utensils className="h-8 w-8 text-primary" />
               <CardTitle className="text-2xl font-semibold gradient-text">Instructions</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2 p-0">
@@ -182,7 +183,8 @@ export default function Home() {
         )}
         {summary && (
           <Card ref={summaryCardRef} className="glass p-6 space-y-4 shadow-xl transition-all duration-300 hover:scale-105">
-            <CardHeader className="p-0">
+            <CardHeader className="p-0 flex flex-row items-center space-x-4">
+              <Utensils className="h-8 w-8 text-primary" />
               <CardTitle className="text-2xl font-semibold gradient-text">Summary</CardTitle>
               <CardDescription className="text-muted-foreground">{summary}</CardDescription>
             </CardHeader>
