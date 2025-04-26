@@ -273,7 +273,7 @@ export default function Home() {
             </div>
           )}
         </div>
-        <div className="w-full max-w-md space-y-4 mt-auto">
+        <div className="w-full max-w-2xl space-y-4 mt-auto">
           <div className="flex items-center space-x-2">
             <Avatar>
               <AvatarImage src="https://picsum.photos/50/50" alt="User Avatar" />
@@ -302,3 +302,4 @@ export default function Home() {
     </div>
   );
 }
+
