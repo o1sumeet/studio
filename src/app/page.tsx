@@ -100,7 +100,7 @@ export default function Home() {
             placeholder="Enter ingredients (e.g., chicken, broccoli, cheese)"
             value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}
-            className="border-primary shadow-sm focus-visible:ring-accent"
+            className="border-input shadow-sm focus-visible:ring-accent"
           />
         </div>
         <Button
@@ -132,7 +132,7 @@ export default function Home() {
                 <Textarea
                   readOnly
                   value={recipe.instructions}
-                  className="w-full h-48 text-sm text-muted-foreground bg-secondary border-input shadow-sm focus-visible:ring-accent resize-none"
+                  className="w-full h-48 text-sm text-muted-foreground bg-interactive border-input shadow-sm focus-visible:ring-accent resize-none"
                 />
               </div>
             </CardContent>

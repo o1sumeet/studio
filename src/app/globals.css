@@ -41,6 +41,9 @@ body {
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+     --interactive: 220 14.3% 95.1%;
+    --interactive-hover: 220 14.3% 90%;
+    --interactive-foreground: 240 10% 3.9%;
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -75,6 +78,9 @@ body {
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --interactive: 240 3.7% 15.9%;
+    --interactive-hover: 240 3.7% 20%;
+    --interactive-foreground: 0 0% 98%;
   }
 }
 
