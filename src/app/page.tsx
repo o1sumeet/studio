@@ -28,6 +28,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const {toast} = useToast();
   const recipeCardRef = useRef<HTMLDivElement>(null);
+  const summaryCardRef = useRef<HTMLDivElement>(null);
   const {theme, setTheme} = useTheme();
 
   useEffect(() => {
@@ -60,6 +61,15 @@ export default function Home() {
       });
     }
   }, [recipe, toast]);
+
+  useEffect(() => {
+    if (summary) {
+      summaryCardRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  }, [summary]);
 
   const handleGenerateRecipe = async () => {
     setLoading(true);
@@ -108,14 +118,14 @@ export default function Home() {
         <HeroImage src="https://picsum.photos/400/300" alt="A fridge with ingredients" />
       </Hero>
       <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-        >
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
+        variant="ghost"
+        size="icon"
+        onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+      >
+        <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+        <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+        <span className="sr-only">Toggle theme</span>
+      </Button>
       <div className="w-full max-w-md space-y-4">
         <div>
           <Input
@@ -140,7 +150,6 @@ export default function Home() {
               <CardTitle className="text-2xl font-semibold gradient-text">
                 {recipe.recipeName}
               </CardTitle>
-              {summary && <CardDescription className="text-muted-foreground">{summary}</CardDescription>}
             </CardHeader>
             <CardContent className="space-y-2 p-0">
               <div>
@@ -160,6 +169,14 @@ export default function Home() {
                 />
               </div>
             </CardContent>
+          </Card>
+        )}
+        {summary && (
+          <Card ref={summaryCardRef} className="glass p-6 space-y-4 shadow-xl transition-all duration-300 hover:scale-105">
+            <CardHeader className="p-0">
+              <CardTitle className="text-2xl font-semibold gradient-text">Summary</CardTitle>
+              <CardDescription className="text-muted-foreground">{summary}</CardDescription>
+            </CardHeader>
           </Card>
         )}
       </div>
